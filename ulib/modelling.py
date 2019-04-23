@@ -25,6 +25,9 @@ import lightgbm as lgb
 
 
 def reset_tf_session():
+    """
+    resets tensorflow session
+    """
     curr_session = tf.get_default_session()
     # close current session
     if curr_session is not None:
@@ -40,6 +43,9 @@ def reset_tf_session():
 
 
 def make_lgbm_model(config):
+    """
+    Creates Light GBM model from given config of settings for this model
+    """
   if config['is_classification']:
     gbm = lgb.LGBMClassifier(boosting_type=config['boosting_type'],
                              objective='binary',
@@ -76,7 +82,7 @@ def make_rf_model(config):
 
 def make_binary_model(config):
     """
-    Fast model to test hypothesis
+    Creates Tensorflow model from given config of settings for this model
     """
     model = Sequential()
     batch_size = config['batch_size']

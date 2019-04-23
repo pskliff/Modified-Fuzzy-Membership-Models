@@ -30,6 +30,9 @@ from sklearn.datasets import make_blobs, make_classification, \
 
 
 def plot_decision_boundary(X, y, model, title='decision boundary'):
+    """
+    Plots decision boundary with coutours
+    """
     fig = plt.figure(figsize=(10, 7), dpi=100)
     X1min, X2min = X.min(axis=0)
     X1max, X2max = X.max(axis=0)
@@ -58,6 +61,9 @@ def plot_decision_boundary(X, y, model, title='decision boundary'):
     
     
 def plot_decision_boundaries(X, y, model, model_nn1, model_nn2, title='decision boundary'):
+    """
+    Plots 3 decision boundaries with coutours
+    """
     fig = plt.figure(figsize=(12, 4), dpi=100)
     X1min, X2min = X.min(axis=0)
     X1max, X2max = X.max(axis=0)
@@ -107,6 +113,9 @@ def plot_decision_boundaries(X, y, model, model_nn1, model_nn2, title='decision 
 
 
 def plot_bndr(X, y, model, title='decision boundary'):
+    """
+    Plots decision boundary without coutours
+    """
     fig, ax = plt.subplots(figsize=(7, 7))
     x0, x1 = np.meshgrid(np.arange(-3, 3, 0.1),
                             np.arange(-3, 3, 0.1))
@@ -130,6 +139,9 @@ def plot_bndr(X, y, model, title='decision boundary'):
 
 
 def plot_bndrs(X, y, model, model_nn1, model_nn2, title='decision boundary'):
+    """
+    Plots 3 decision boundaries without coutours
+    """
     fig, ax = plt.subplots(figsize=(7, 7))
     x0, x1 = np.meshgrid(np.arange(-3, 3, 0.1),
                             np.arange(-3, 3, 0.1))
@@ -157,6 +169,9 @@ def plot_bndrs(X, y, model, model_nn1, model_nn2, title='decision boundary'):
 
 
 def plot_sigms(X, y, model, model_nn1, model_nn2, title='decision boundary'):
+    """
+    Plots membership functions in 2D
+    """
   
     plt.figure(figsize=(6, 6), dpi=100)
     #   fig, ax = plt.subplots(figsize=(7, 7))

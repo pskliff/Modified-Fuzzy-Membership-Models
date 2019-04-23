@@ -25,6 +25,9 @@ import lightgbm as lgb
 
 
 class ml_classifier:
+"""
+    Describes machine learning classifier
+"""
   def __init__(self, config):
     self.config = config
     self.get_model_method = config['get_model_method']
@@ -37,6 +40,9 @@ class ml_classifier:
     
     
   def fit(self, X, y):
+    """
+    Trains model on given data
+    """
     ss = self.config['scaler']
     X = ss.fit_transform(X)
 
@@ -64,6 +70,9 @@ class ml_classifier:
   
   
   def predict_proba(self, X):
+    """
+    Predicts probabilities of classes
+    """
     X_t = self.ss.transform(X)
 #     print('keras predict')
 #     print(self.model.predict(X_t))
@@ -75,11 +84,17 @@ class ml_classifier:
   
   
   def predict(self, X):
+    """
+    Predicts class
+    """
     y_proba = self.predict_proba(X)
     return (y_proba > self.best_thres).astype(int)
   
    
   def _choose_threshold(self, X, y):
+    """
+    Chooses best probability threshold
+    """
     y_proba = self.predict_proba(X).reshape(X.shape[0])
     best_score = 0
     best_thres = 0
@@ -106,6 +121,9 @@ class ml_classifier:
   
   
 class ml_regressor:
+"""
+    Describes machine learning regressor
+"""
   def __init__(self, config):
     self.config = config
     self.get_model_method = config['get_model_method']
@@ -118,6 +136,9 @@ class ml_regressor:
     
     
   def fit(self, X, y):
+    """
+    Trains model on given data
+    """
     ss = self.config['scaler']
     X = ss.fit_transform(X)
 
@@ -143,6 +164,9 @@ class ml_regressor:
   
   
   def predict_proba(self, X):
+    """
+    Predicts probabilities of classes
+    """
     X_t = self.ss.transform(X)
     y_proba = self.model.predict(X_t)
     mask = np.arange(len(y_proba))[y_proba < 0]
@@ -152,11 +176,17 @@ class ml_regressor:
   
   
   def predict(self, X):
+    """
+    Predicts class
+    """
     y_proba = self.predict_proba( X)
     return (y_proba > self.best_thres).astype(int)
   
    
   def _choose_threshold(self, X, y):
+    """
+    Chooses best probability threshold
+    """
     y_proba = self.predict_proba(X).reshape(X.shape[0])
     best_score = 0
     best_thres = 0

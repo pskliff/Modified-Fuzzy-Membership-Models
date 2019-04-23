@@ -39,9 +39,11 @@ from sklearn.datasets import make_blobs, make_classification, \
 def ml_experiment(nn_config, nn1_config, nn2_config, 
                   X, y, lmbd=-0.5, thresholds=[0.5, 0.5, 0.5], verbose=False,
                  left_proba=0.4, right_proba=0.6):
-  
-#   if is_classification:
-#     y_cat = to_categorical(y)
+    
+    """
+    Runs FMM algorithm with machine learning models as approximators
+    """
+
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
                                                         shuffle=True, stratify=y,
                                                         random_state=SEED)
@@ -176,9 +178,10 @@ def ml_experiment(nn_config, nn1_config, nn2_config,
 def dl_experiment(nn_config, nn1_config, nn2_config, 
                   X, y, lmbd=-0.5, thresholds=[0.5, 0.5, 0.5], verbose=False,
                  left_proba=0.4, right_proba=0.6):
+    """
+    Runs FMM algorithm with deep learning models as approximators
+    """
   
-#   if is_classification:
-#     y_cat = to_categorical(y)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
                                                         shuffle=True, stratify=y,
                                                         random_state=SEED)
